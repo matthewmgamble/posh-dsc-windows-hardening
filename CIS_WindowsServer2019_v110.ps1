@@ -2810,14 +2810,14 @@ Configuration CIS_WindowsServer2019_v110 {
           ValueType  = 'DWord'
           ValueData  = '0'
        }
-
+       # MG - We can't enforce this yet as we need WinRM for provisioning
        #  18.9.97.1.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
        Registry 'AllowBasic' {
           Ensure     = 'Present'
           Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client'
           ValueName  = 'AllowBasic'
           ValueType  = 'DWord'
-          ValueData  = '0'
+          ValueData  = '1'
        }
 
        #  18.9.97.1.2 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
@@ -2826,7 +2826,7 @@ Configuration CIS_WindowsServer2019_v110 {
           Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client'
           ValueName  = 'AllowUnencryptedTraffic'
           ValueType  = 'DWord'
-          ValueData  = '0'
+          ValueData  = '1'
        }
 
        #  18.9.97.1.3 (L1) Ensure 'Disallow Digest authentication' is set to 'Enabled'
@@ -2835,7 +2835,7 @@ Configuration CIS_WindowsServer2019_v110 {
           Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client'
           ValueName  = 'AllowDigest'
           ValueType  = 'DWord'
-          ValueData  = '0'
+          ValueData  = '1'
        }
 
        #  18.9.97.2.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
@@ -2844,7 +2844,7 @@ Configuration CIS_WindowsServer2019_v110 {
           Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service'
           ValueName  = 'AllowBasic'
           ValueType  = 'DWord'
-          ValueData  = '0'
+          ValueData  = '1'
        }
 
        #  18.9.97.2.2 (L2) Ensure 'Allow remote server management through WinRM' is set to 'Disabled'
@@ -2863,7 +2863,7 @@ Configuration CIS_WindowsServer2019_v110 {
           Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service'
           ValueName  = 'AllowUnencryptedTraffic'
           ValueType  = 'DWord'
-          ValueData  = '0'
+          ValueData  = '1'
        }
 
        #  18.9.97.2.4 (L1) Ensure 'Disallow WinRM from storing RunAs credentials' is set to 'Enabled'
@@ -2881,7 +2881,7 @@ Configuration CIS_WindowsServer2019_v110 {
           Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS'
           ValueName  = 'AllowRemoteShellAccess'
           ValueType  = 'DWord'
-          ValueData  = '0'
+          ValueData  = '1'
        }
 
        #  18.9.99.2.1 (L1) Ensure 'Prevent users from modifying settings' is set to 'Enabled'
