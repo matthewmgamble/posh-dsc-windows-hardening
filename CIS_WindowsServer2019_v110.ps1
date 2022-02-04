@@ -491,14 +491,17 @@ Configuration CIS_WindowsServer2019_v110 {
 
        }
 
+       # This will have to be tuned post-prep as we need WinRM enabled
+
        #  9.1.1 (L1) Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'
        Registry 'EnableFirewallDomain' {
            Ensure      = 'Present'
            Key         = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\EnableFirewall'
            ValueName   = 'EnableFirewall'
            ValueType   = 'DWord'
-           ValueData   = '1'
+           ValueData   = '0'
        }
+       # This will have to be tuned post-prep as we need WinRM enabled
 
        #  9.1.2 (L1) Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)'
        Registry 'DefaultInboundActionDomain' {
@@ -506,7 +509,7 @@ Configuration CIS_WindowsServer2019_v110 {
            Key         = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultInboundAction'
            ValueName   = 'DefaultInboundAction'
            ValueType   = 'DWord'
-           ValueData   = '1'
+           ValueData   = '0'
        }
 
        #  9.1.3 (L1) Ensure 'Windows Firewall: Domain: Outbound connections' is set to 'Allow (default)'
@@ -563,22 +566,24 @@ Configuration CIS_WindowsServer2019_v110 {
           ValueData    = '1'
        }
 
+       # This will have to be tuned post-prep as we need WinRM enabled
        #  9.2.1 (L1) Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'
        Registry 'EnableFirewallPrivate' {
           Ensure       = 'Present'
           Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
           ValueName    = 'EnableFirewall'
           ValueType    = 'DWord'
-          ValueData    = '1'
+          ValueData    = '0'
        }
 
+       # This will have to be tuned post-prep as we need WinRM enabled
        #  9.2.2 (L1) Ensure 'Windows Firewall: Private: Inbound connections' is set to 'Block (default)'
        Registry 'DefaultInboundActionPrivate' {
           Ensure       = 'Present'
           Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
           ValueName    = 'DefaultInboundAction'
           ValueType    = 'DWord'
-          ValueData    = '1'
+          ValueData    = '0'
        }
 
        #  9.2.3 (L1) Ensure 'Windows Firewall: Private: Outbound connections' is set to 'Allow (default)'
@@ -635,13 +640,14 @@ Configuration CIS_WindowsServer2019_v110 {
           ValueData    = '1'
        }
 
+      # This will have to be tuned post-prep as we need WinRM enabled
        #  9.3.1 (L1) Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'
        Registry 'EnableFirewallPublic' {
           Ensure       = 'Present'
           Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
           ValueName    = 'EnableFirewall'
           ValueType    = 'DWord'
-          ValueData    = '1'
+          ValueData    = '0'
        }
 
        #  9.3.2 (L1) Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'
@@ -650,7 +656,7 @@ Configuration CIS_WindowsServer2019_v110 {
           Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
           ValueName    = 'DefaultInboundAction'
           ValueType    = 'DWord'
-          ValueData    = '1'
+          ValueData    = '0'
        }
 
        #  9.3.3 (L1) Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'
