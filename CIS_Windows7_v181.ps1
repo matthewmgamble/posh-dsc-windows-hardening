@@ -3957,4 +3957,4 @@ Configuration CIS_Windows7_v181 {
     }
 }
 
-CIS_Windows10_v181
+CIS_Windows7_v181
