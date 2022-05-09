@@ -594,31 +594,31 @@ Configuration CIS_Windows10_v181 {
         } 
 
         # 5.21 (L2) Ensure 'Remote Desktop Configuration (SessionEnv)' is set to 'Disabled'
-        Registry 'SessionEnv' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SessionEnv'
-            ValueName   = 'Start'
-            ValueType   = 'DWord'
-            ValueData   = '4'
-        } 
+        #Registry 'SessionEnv' {
+        #    Ensure      = 'Present'
+        #    Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SessionEnv'
+        #    ValueName   = 'Start'
+        #    ValueType   = 'DWord'
+        #    ValueData   = '4'
+        #} 
 
         # 5.22 (L2) Ensure 'Remote Desktop Services (TermService)' is set to 'Disabled'
-        Registry 'TermService' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TermService'
-            ValueName   = 'Start'
-            ValueType   = 'DWord'
-            ValueData   = '4'
-        } 
+        #Registry 'TermService' {
+         #   Ensure      = 'Present'
+        #    Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TermService'
+        #    ValueName   = 'Start'
+        #    ValueType   = 'DWord'
+       #     ValueData   = '4'
+       # } 
 
         # 5.23 (L2) Ensure 'Remote Desktop Services UserMode Port Redirector (UmRdpService)' is set to 'Disabled'
-        Registry 'UmRdpService' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UmRdpService'
-            ValueName   = 'Start'
-            ValueType   = 'DWord'
-            ValueData   = '4'
-        } 
+       # Registry 'UmRdpService' {
+       #     Ensure      = 'Present'
+       #     Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UmRdpService'
+       #     ValueName   = 'Start'
+       #     ValueType   = 'DWord'
+      #      ValueData   = '4'
+      #  } 
 
         # 5.24 (L1) Ensure 'Remote Procedure Call (RPC) Locator (RpcLocator)' is set to 'Disabled'
         Registry 'RpcLocator' {
@@ -756,13 +756,13 @@ Configuration CIS_Windows10_v181 {
         } 
         
         # 5.39 (L2) Ensure 'Windows Remote Management (WS-Management) (WinRM)' is set to 'Disabled'
-        Registry 'WinRM' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM'
-            ValueName   = 'Start'
-            ValueType   = 'DWord'
-            ValueData   = '4'
-        } 
+       # Registry 'WinRM' {
+         #   Ensure      = 'Present'
+       #     Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM'
+       #     ValueName   = 'Start'
+       #     ValueType   = 'DWord'
+       #     ValueData   = '4'
+       # } 
 
         # 5.40 (L1) Ensure 'World Wide Web Publishing Service (W3SVC)' is set to 'Disabled' or 'Not Installed'
         Registry 'W3SVC' {
@@ -954,22 +954,22 @@ Configuration CIS_Windows10_v181 {
         }
 
         # 9.3.1 (L1) Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'
-        Registry 'EnableFirewallPublic' {
-            Ensure       = 'Present'
-            Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-            ValueName    = 'EnableFirewall'
-            ValueType    = 'DWord'
-            ValueData    = '1'
-        }
+        #Registry 'EnableFirewallPublic' {
+       #     Ensure       = 'Present'
+       #     Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
+       #     ValueName    = 'EnableFirewall'
+       #     ValueType    = 'DWord'
+       #     ValueData    = '1'
+      #  }
 
         # 9.3.2 (L1) Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'
-        Registry 'DefaultInboundActionPublic' {
-            Ensure       = 'Present'
-            Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-            ValueName    = 'DefaultInboundAction'
-            ValueType    = 'DWord'
-            ValueData    = '1'
-        }
+      #  Registry 'DefaultInboundActionPublic' {
+      #      Ensure       = 'Present'
+      #      Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
+      #      ValueName    = 'DefaultInboundAction'
+      #      ValueType    = 'DWord'
+      #      ValueData    = '1'
+     #   }
 
         # 9.3.3 (L1) Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'
         Registry 'DefaultOutboundActionPublic' {
@@ -990,13 +990,13 @@ Configuration CIS_Windows10_v181 {
         }
 
         # 9.3.5 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No'
-        Registry 'AllowLocalPolicyMerge' {
-            Ensure       = 'Present'
-            Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-            ValueName    = 'AllowLocalPolicyMerge'
-            ValueType    = 'DWord'
-            ValueData    = '0'
-        }
+      #  Registry 'AllowLocalPolicyMerge' {
+       #     Ensure       = 'Present'
+       #     Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
+      #      ValueName    = 'AllowLocalPolicyMerge'
+      #      ValueType    = 'DWord'
+      #      ValueData    = '0'
+      #  }
 
         # 9.3.6 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'
         Registry 'AllowLocalIPsecPolicyMerge' {
