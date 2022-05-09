@@ -122,10 +122,10 @@ Configuration CIS_Windows10_v181 {
             Identity     = 'Administrators'
         }        
 
-        # 2.2.16 (L1) Ensure 'Deny access to this computer from the network' is set to 'Guests, Local account'
+        # 2.2.16 (L1) Ensure 'Deny access to this computer from the network' is set to 'Guests'
         UserRightsAssignment Denyaccesstothiscomputerfromthenetwork {
             Policy       = 'Deny_access_to_this_computer_from_the_network'
-            Identity     = 'Guests, Local account'
+            Identity     = 'Guests'
         }
 
         # 2.2.17 (L1) Ensure 'Deny log on as a batch job' to include 'Guests'
@@ -146,10 +146,10 @@ Configuration CIS_Windows10_v181 {
             Identity     = 'Guests'
         }
 
-        # 2.2.20 (L1) Ensure 'Deny log on through Remote Desktop Services' is set to 'Guests, Local account'
+        # 2.2.20 (L1) Ensure 'Deny log on through Remote Desktop Services' is set to 'Guests'
         UserRightsAssignment DenylogonthroughRemoteDesktopServices {
             Policy       = 'Deny_log_on_through_Remote_Desktop_Services'
-            Identity     = 'Guests, Local account'
+            Identity     = 'Guests'
         }
 
         # 2.2.21 (L1) Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'
@@ -268,8 +268,8 @@ Configuration CIS_Windows10_v181 {
 
         SecurityOption AccountSecurityOptions {
             Name = 'AccountSecurityOptions'
-            # 2.3.1.1 (L1) Ensure 'Accounts: Administrator account status' is set to 'Disabled'
-            Accounts_Administrator_account_status  = 'Disabled'
+            # 2.3.1.1 (L1) Ensure 'Accounts: Administrator account status' is set to 'Disabled' - We had to change this
+            Accounts_Administrator_account_status  = 'Enabled'
             # 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
             Accounts_Block_Microsoft_accounts = 'Users cant add or log on with Microsoft accounts'
             # 2.3.1.3 (L1) Ensure 'Accounts: Guest account status' is set to 'Disabled'
@@ -277,9 +277,9 @@ Configuration CIS_Windows10_v181 {
             # 2.3.1.4 (L1) Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
             Accounts_Limit_local_account_use_of_blank_passwords_to_console_logon_only = 'Enabled'
             # 2.3.1.5 (L1) Configure 'Accounts: Rename administrator account'
-            Accounts_Rename_administrator_account = 'User_Adm' # WARNING! Any value different from Administrator
+            Accounts_Rename_administrator_account = 'CloudAdmin' # WARNING! Any value different from Administrator
             # 2.3.1.6 (L1) Configure 'Accounts: Rename guest account'
-            Accounts_Rename_guest_account = 'User_Guest' # WARNING! Any value different from Guest
+            Accounts_Rename_guest_account = 'CloudGuest' # WARNING! Any value different from Guest
             # 2.3.2.1 (L1) Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'
             Audit_Force_audit_policy_subcategory_settings_Windows_Vista_or_later_to_override_audit_policy_category_settings = 'Enabled'
             # 2.3.2.2 (L1) Ensure 'Audit: Shut down system immediately if unable to log security audits' is set to 'Disabled'
@@ -309,7 +309,7 @@ Configuration CIS_Windows10_v181 {
             # 2.3.7.4 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0'
             Interactive_logon_Machine_inactivity_limit = '900' 
             # 2.3.7.5 (L1) Configure 'Interactive logon: Message text for users attempting to log on' 
-            Interactive_logon_Message_text_for_users_attempting_to_log_on = 'This computer system is the property of Acme Corporation and is for authorised use by employees and designated contractors only. By continuing to use this system you indicate your awareness of and consent to these terms and conditions of use.It is the users responsibility to LOG OFF IMMEDIATELY if you do not agree to the conditions stated in this notice.'
+            Interactive_logon_Message_text_for_users_attempting_to_log_on = 'This computer system is private property and is for authorised use by employees and designated contractors only. By continuing to use this system you indicate your awareness of and consent to these terms and conditions of use.It is the users responsibility to LOG OFF IMMEDIATELY if you do not agree to the conditions stated in this notice.'
             # 2.3.7.6 (L1) Configure 'Interactive logon: Message title for users attempting to log on'
             Interactive_logon_Message_title_for_users_attempting_to_log_on = 'Logon Warning'
             # 2.3.7.7 (L2) Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logon(s)'
@@ -810,22 +810,22 @@ Configuration CIS_Windows10_v181 {
         } 
 
         # 9.1.1 (L1) Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'
-        Registry 'EnableFirewallDomain' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\EnableFirewall'
-            ValueName   = 'EnableFirewall'
-            ValueType   = 'DWord'
-            ValueData   = '1'
-        }
+    #    Registry 'EnableFirewallDomain' {
+     #       Ensure      = 'Present'
+     #       Key         = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\EnableFirewall'
+     #       ValueName   = 'EnableFirewall'
+     #       ValueType   = 'DWord'
+     #       ValueData   = '1'
+     #   }
 
         # 9.1.2 (L1) Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)'
-        Registry 'DefaultInboundActionDomain' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultInboundAction'
-            ValueName   = 'DefaultInboundAction'
-            ValueType   = 'DWord'
-            ValueData   = '1'
-        }
+    #    Registry 'DefaultInboundActionDomain' {
+    #        Ensure      = 'Present'
+     #       Key         = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultInboundAction'
+     #       ValueName   = 'DefaultInboundAction'
+    #        ValueType   = 'DWord'
+    #        ValueData   = '1'
+    #    }
 
         # 9.1.3 (L1) Ensure 'Windows Firewall: Domain: Outbound connections' is set to 'Allow (default)'
         Registry 'DefaultOutboundActionDomain' {
@@ -891,13 +891,13 @@ Configuration CIS_Windows10_v181 {
         }
 
         # 9.2.2 (L1) Ensure 'Windows Firewall: Private: Inbound connections' is set to 'Block (default)'
-        Registry 'DefaultInboundActionPrivate' {
-            Ensure       = 'Present'
-            Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
-            ValueName    = 'DefaultInboundAction'
-            ValueType    = 'DWord'
-            ValueData    = '1'
-        }
+   #     Registry 'DefaultInboundActionPrivate' {
+    #        Ensure       = 'Present'
+   #         Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile'
+    #        ValueName    = 'DefaultInboundAction'
+     #       ValueType    = 'DWord'
+     #       ValueData    = '1'
+    #    }
 
         # 9.2.3 (L1) Ensure 'Windows Firewall: Private: Outbound connections' is set to 'Allow (default)'
         Registry 'DefaultOutboundActionPrivate' {
@@ -989,14 +989,14 @@ Configuration CIS_Windows10_v181 {
             ValueData    = '0'
         }
 
-        # 9.3.5 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No'
-      #  Registry 'AllowLocalPolicyMerge' {
-       #     Ensure       = 'Present'
-       #     Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
-      #      ValueName    = 'AllowLocalPolicyMerge'
-      #      ValueType    = 'DWord'
-      #      ValueData    = '0'
-      #  }
+      #   9.3.5 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'YES' - We had to change this
+        Registry 'AllowLocalPolicyMerge' {
+            Ensure       = 'Present'
+            Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
+            ValueName    = 'AllowLocalPolicyMerge'
+            ValueType    = 'DWord'
+            ValueData    = '1'
+        }
 
         # 9.3.6 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'
         Registry 'AllowLocalIPsecPolicyMerge' {
