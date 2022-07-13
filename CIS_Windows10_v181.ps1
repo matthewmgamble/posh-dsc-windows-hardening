@@ -3691,7 +3691,7 @@ Configuration CIS_Windows10_v181 {
             Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service'
             ValueName  = 'AllowAutoConfig'
             ValueType  = 'DWord'
-            ValueData  = '0'
+            ValueData  = '1'
         }
 
         #  18.9.97.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
