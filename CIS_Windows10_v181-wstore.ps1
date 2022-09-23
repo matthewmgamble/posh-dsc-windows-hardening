@@ -3271,13 +3271,6 @@ Configuration CIS_Windows10_v181 {
             ValueData  = '0'
         }
         
-        Registry 'RemoveWindowsStore' {
-            Ensure     = 'Present'
-            Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore'
-            ValueName  = 'RemoveWindowsStore'
-            ValueType  = 'DWord'
-            ValueData  = '0'
-        }
         # 18.9.69.2 (L1) Ensure 'Only display the private store within the Microsoft Store' is set to 'Enabled'
         #Registry 'RequirePrivateStoreOnly' {
         #    Ensure     = 'Present'
@@ -3306,12 +3299,13 @@ Configuration CIS_Windows10_v181 {
         }
 
         # 18.9.69.5 (L2) Ensure 'Turn off the Store application' is set to 'Enabled'
+        # Re-enable 
         Registry 'RemoveWindowsStore' {
             Ensure     = 'Present'
             Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore'
             ValueName  = 'RemoveWindowsStore'
             ValueType  = 'DWord'
-            ValueData  = '1'
+            ValueData  = '0'
         }
 
         # 18.9.77.3.1 (L1) Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'
