@@ -648,13 +648,14 @@ Configuration CIS_Windows10_v181 {
         } 
 
         # 5.27 (L2) Ensure 'Server (LanmanServer)' is set to 'Disabled'
-        Registry 'LanmanServer' {
-            Ensure      = 'Present'
-            Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer'
-            ValueName   = 'Start'
-            ValueType   = 'DWord'
-            ValueData   = '4'
-        } 
+        # Disabled because it causes Windows Defender to fail
+       # Registry 'LanmanServer' {
+       #     Ensure      = 'Present'
+       #     Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer'
+       #     ValueName   = 'Start'
+       #     ValueType   = 'DWord'
+       #     ValueData   = '4'
+       # } 
 
         # 5.28 (L1) Ensure 'Simple TCP/IP Services (simptcp)' is set to 'Disabled' or 'Not Installed'
         Registry 'simptcp' {
